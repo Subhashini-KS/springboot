@@ -1,0 +1,5 @@
+package com.projectreview.model;
+
+public class Billboard {
+
+}

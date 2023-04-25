@@ -1,0 +1,5 @@
+package com.projectreview.demo.repository;
+
+public interface Billboardrepo {
+
+}

@@ -1,0 +1,19 @@
+package com.project.demo.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.project.demo.model.SeriesTable;
+import com.project.demo.repository.Seriesrepo;
+
+@Service
+public class SeriesTableService {
+
+	@Autowired
+	public Seriesrepo srep;
+	
+	public SeriesTable saveDetails(SeriesTable r)
+	{
+		return srep.save(r);
+	}
+}

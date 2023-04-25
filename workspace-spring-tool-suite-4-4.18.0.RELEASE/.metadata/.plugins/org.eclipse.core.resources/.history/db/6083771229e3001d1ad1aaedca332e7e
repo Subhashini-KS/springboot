@@ -1,0 +1,5 @@
+package com.projectreview.demo.service;
+
+public class BillboardService {
+
+}

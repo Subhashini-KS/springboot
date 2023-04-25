@@ -1,0 +1,20 @@
+package com.projectreview.demo.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.projectreview.demo.model.Billboard;
+import com.projectreview.demo.repository.Billboardrepo;
+
+@Service
+public class BillboardService {
+
+	@Autowired
+	public Billboardrepo brep;
+	
+	//posting the info
+	public Billboard saveInfo(Billboard r)
+	{
+		return brep.save(r);
+	}
+}

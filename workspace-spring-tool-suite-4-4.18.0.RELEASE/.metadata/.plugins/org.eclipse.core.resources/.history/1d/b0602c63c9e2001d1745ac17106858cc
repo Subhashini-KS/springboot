@@ -1,0 +1,54 @@
+package com.project.demo.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.project.demo.model.SeriesTable;
+import com.project.demo.service.SeriesTableService;
+
+@RestController
+public class SeriesController {
+
+	@Autowired
+	public SeriesTableService cser;
+	
+	@PostMapping("/hi")
+	public SeriesTable addDetails(@RequestBody SeriesTable ad)
+	{
+		return cser.saveDetails(ad);
+	}
+	@GetMapping("/get")
+	public List<SeriesTable>getDetails()
+	{
+		return cser.getDetails();
+	}
+	
+	@PutMapping("/put")
+	public SeriesTable updateDetails(@RequestBody SeriesTable code)
+	{
+		return cser.updateDetails(code);
+	}
+	
+	@DeleteMapping("/delete")
+	public String deleteByRP(@RequestParam("code") int rating )
+	{
+		cser.deleteDetails(rating);
+		return rating + " is deleted";
+	}
+	
+	@DeleteMapping("/deletePV/{id}")
+	public String deletePV(@PathVariable("code") int rate)
+	{
+		cser.deleteDetails(rate);
+		return " deleted" ;
+	}
+}

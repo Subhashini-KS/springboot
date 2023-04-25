@@ -1,0 +1,22 @@
+package com.projectreview.demo.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.projectreview.demo.model.Billboard;
+import com.projectreview.demo.service.BillboardService;
+
+@RestController
+public class BillboardController {
+
+	@Autowired
+	public BillboardService bser;
+	
+	@PostMapping("/insert")
+	public Billboard addDetails(@RequestBody Billboard ad)
+	{
+		return bser.saveInfo(ad);
+	}
+}
