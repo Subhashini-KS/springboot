@@ -1,6 +1,6 @@
 package com.projectreview.demo.controller;
 
-import java.util.List;
+import java.util.List;  
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -52,4 +52,38 @@ public class BillboardController {
 		bser.deleteInfo(sno);
 		return sno + " is deleted";
 	}
+	
+	@GetMapping("/sortBillboard/{field}")
+	public List<Billboard> sortBillboard(@PathVariable String field)
+	{
+		return bser.sortAll(field);
+	}
+	
+	//pagination
+	@GetMapping(value="/pageStudents/{field}/{size}")
+	public List<Billboard> pagingBillboard(@PathVariable("field") int offset,@PathVariable("size") int  pageSize)
+	
+	{
+	 return bser.pagingBillboard(offset, pageSize);	
+	}
+	
+	//pagination and sorting
+	@GetMapping("pagination/{nm}/{sp}/{inr}")
+	public List<Billboard> paginate(@PathVariable("nm") int num,@PathVariable("sp") int size,@PathVariable("inr") String name)
+	{
+		return bser.paginate(num,size,name);
+	}
+	
+	//http://localhost:8080/fetchCustomersByNamePrefix?prefix=a
+		@GetMapping("/fetchCustomersByNamePrefix")
+		public List<Billboard>fetchCustomersBySongnamePrefix(@RequestParam String prefix)
+		{
+			return bser.fetchCustomersByNamePrefix(prefix);
+		}
+		//http://localhost:8080/fetchCustomersByNameSuffix?suffix=b
+		@GetMapping("/fetchCustomersByNameSuffix")
+		public List<Billboard>fetchCustomersBySongnameSuffix(@RequestParam String suffix)
+		{
+			return bser.fetchCustomersByNameSuffix(suffix);
+		}
 }

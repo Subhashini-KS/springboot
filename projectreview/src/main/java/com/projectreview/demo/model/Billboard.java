@@ -1,6 +1,6 @@
 package com.projectreview.demo.model;
 
-import jakarta.persistence.Column;
+import jakarta.persistence.Column; 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
@@ -20,6 +20,7 @@ public class Billboard {
 	private int rating;
 	private int position;
 	private int avglisteners;
+	private String officialemail;
 	
 	public int getSno() {
 		return sno;
@@ -74,5 +75,11 @@ public class Billboard {
 	}
 	public void setAvglisteners(int avglisteners) {
 		this.avglisteners = avglisteners;
+	}
+	public String getOfficialemail() {
+		return officialemail;
+	}
+	public void setOfficialemail(String officialemail) {
+		this.officialemail = officialemail;
 	}
 }
